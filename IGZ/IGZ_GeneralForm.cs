@@ -10,8 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using IGAE_GUI.Types;
+using IGAE_GUI.Utils;
 
-namespace IGAE_GUI.IGZ {
+namespace IGAE_GUI.IGZ
+{
     public partial class IGZ_GeneralForm : Form {
         TreeNode fixups = new("Fixups");
         TreeNode objects = new("Object List");
@@ -219,8 +221,9 @@ namespace IGAE_GUI.IGZ {
                     Console.WriteLine("igImage2 Selected");
                     MemoryStream msImage = new MemoryStream();
                     (igObject as igImage2).Extract(msImage);
+                    if (msImage.Length == 0) return;
                     msImage.Seek(0x00, SeekOrigin.Begin);
-                    pbTexturePreview.Image = Utils.TextureHelper.BitmapFromDDS(msImage);
+                    pbTexturePreview.Image = TextureHelper.BitmapFromDDS(msImage);
                     pbTexturePreview.Visible = true;
                     btnTextureExtract.Visible = true;
                     btnTextureReplace.Visible = true;
@@ -250,7 +253,11 @@ namespace IGAE_GUI.IGZ {
                         treeItems.SelectedNode.FullPath.Replace("\\", "/")[
                                 (treeItems.SelectedNode.FullPath.LastIndexOf("/", StringComparison.Ordinal) + 1)..]
                             .Replace(".png", ".dds");
-
+                if (sfd.FileName.Contains("#"))
+                {
+                    string[] parts = sfd.FileName.Split("#");
+                    sfd.FileName = parts[parts.Length - 2];
+                }
                 if (sfd.ShowDialog() == DialogResult.OK) {
                     FileStream ofs = new FileStream(sfd.FileName, FileMode.Create, FileAccess.ReadWrite);
                     (igObjectMap[treeItems.SelectedNode] as igImage2)?.Extract(ofs);
@@ -268,6 +275,30 @@ namespace IGAE_GUI.IGZ {
             if (ofd.ShowDialog() != DialogResult.OK) return;
             var ifs = new FileStream(ofd.FileName, FileMode.Open, FileAccess.ReadWrite);
             (igObjectMap[treeItems.SelectedNode] as igImage2)!.Replace(ifs);
+        }
+        void ExportDDSTexture(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "DirectDraw Surface Files (*.dds)|*.dds|All Files (*.*)|*.*";
+                sfd.RestoreDirectory = true;
+                if (treeItems.SelectedNode.FullPath != "")
+                    sfd.FileName =
+                        treeItems.SelectedNode.FullPath.Replace("\\", "/")[
+                                (treeItems.SelectedNode.FullPath.LastIndexOf("/", StringComparison.Ordinal) + 1)..]
+                            .Replace(".png", ".dds");
+                if (sfd.FileName.Contains("#"))
+                {
+                    string[] parts = sfd.FileName.Split("#");
+                    sfd.FileName = parts[parts.Length - 2];
+                }
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    FileStream ofs = new FileStream(sfd.FileName, FileMode.Create, FileAccess.ReadWrite);
+                    (igObjectMap[treeItems.SelectedNode] as igImage2)?.ExtractDDS(ofs);
+                    ofs.Close();
+                }
+            }
         }
 
         private void ImportDDSTexture(object sender, EventArgs e)
@@ -290,6 +321,12 @@ namespace IGAE_GUI.IGZ {
             foreach (var key in unfiltered) {
                 var nodeName = key.ToString().Substring("TreeNode: ".Length);
                 var fileName = nodeName.Replace("\\", "/")[(nodeName.LastIndexOf("/", StringComparison.Ordinal) + 1)..];
+                if (fileName.Contains("#"))
+                {
+                    string[] parts = fileName.Split("#");
+                    fileName = parts[parts.Length - 2];
+                    fileName += ".dds";
+                }
                 var fullPath = exportDir + "/" + fileName;
 
                 // FIXME: the only exportable thing from igae is textures. R.I.P igae Hope the new tool does well

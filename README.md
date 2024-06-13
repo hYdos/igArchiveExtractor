@@ -45,25 +45,25 @@ If you're on mac or linux use wine but idk if that works
 |---|---|---|---|---|---|
 | Skylanders Spyro's Adventure | 3DS | ❌ | ❌ | ❌ | ❌ |
 | | Wii | ✅ | ❌ | ✅ | ✅ |
-| | Wii U | ✅ | ✅ | ❌ | ❌ |
+| | Wii U | ✅ | ✅ | ✅ | ✅ |
 | Skylanders Giants | 3DS | ❌ | ❌ | ❌ | ❌ |
 | | Wii | ✅ | ✅ | ✅ | ✅ |
-| | Wii U | ✅ | ✅ | ❌ | ❌ |
+| | Wii U | ✅ | ✅ | ✅ | ✅ |
 | | PS3 | ✅ | ✅ | ✅ | ✅ |
 | | Xbox 360 | ✅ | ✅ | ❓ | ❓ |
 | Skylanders Swap Force | 3DS | ❌ | ❌ | ❌ | ❌ |
 | | Wii | ✅ | ❓ | ✅ | ✅ |
-| | Wii U | ✅ | ✅ | ❌ | ❌ |
+| | Wii U | ✅ | ✅ | ✅ | ✅ |
 | | PS3 | ✅ | ✅ | ✅ | ✅ |
 | | PS4 | ✅ | ❓ | ❓ | ❓ |
 | | Xbox 360 | ❌ | ❌ | ❓ | ❓ |
 | Skylanders Trap Team | 3DS | ❌ | ❌ | ❌ | ❌ |
 | | Wii | ✅ | ✅ | ✅ | ✅ |
-| | Wii U | ✅ | ✅ | ❌ | ❌ |
+| | Wii U | ✅ | ✅ | ✅ | ✅ |
 | | PS3 | ✅ | ✅ | ✅ | ✅ |
 | | PS4 | ✅ | ✅ | ❓ | ❓ |
 | | Xbox 360 | ✅ | ✅ | ❓ | ❓ |
-| Skylanders Superchargers | Wii U | ✅ | ✅ | ❌ | ❌ |
+| Skylanders Superchargers | Wii U | ✅ | ✅ | ✅ | ✅ |
 | | PS3 | ✅ | ✅ | ✅ | ✅ |
 | | PS4 | ✅ | ✅ | ❓ | ❓ |
 | | Xbox 360 | ❌ | ❌ | ❓ | ❓ |
@@ -72,7 +72,7 @@ If you're on mac or linux use wine but idk if that works
 | Skylanders Imaginators | PS4 | ✅ | ❌ | ❌ | ❌ |
 | | PS3 | ✅ | ✅ | ✅ | ✅ |
 | | Xbox 360 | ❌ | ❌ | ❌ | ❌ |
-| | Wii U | ✅ | ✅ | ❌ | ❌ |
+| | Wii U | ✅ | ✅ | ✅ | ✅ |
 | | Switch | ✅ | ❌ | ❌ | ❌ |
 
 * select Trap Team Home Console for SSC iOS and select Imaginators PS4 for Imaginators Switch

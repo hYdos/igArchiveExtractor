@@ -20,139 +20,177 @@ namespace IGAE_GUI.IGZ
 			base.Dispose(disposing);
 		}
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-			this.components = new System.ComponentModel.Container();
-			this.treeItems = new System.Windows.Forms.TreeView();
-			this.pbTexturePreview = new System.Windows.Forms.PictureBox();
-			this.cbFilterImages = new System.Windows.Forms.CheckBox();
-			this.btnSaveAllObjects = new System.Windows.Forms.Button();
-			this.btnTextureExtract = new System.Windows.Forms.Button();
-			this.btnTextureReplace = new System.Windows.Forms.Button();
-            this.btnTextureReplaceDDS = new System.Windows.Forms.Button();
-            this.btnSaveIGZ = new System.Windows.Forms.Button();
-			this.SuspendLayout();
-			//
-			// treeItems
-			//
-			this.treeItems.Location = new System.Drawing.Point(12, 12);
-			this.treeItems.Name = "treeItems";
-			this.treeItems.Font = new System.Drawing.Font(System.Drawing.FontFamily.GenericMonospace.Name, 8);
-			this.treeItems.Size = new System.Drawing.Size(476, 476);
-			this.treeItems.TabIndex = 1;
-			this.treeItems.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.SelectionChange);
-			//
-			// pbTexturePreview
-			//
-			this.pbTexturePreview.Location = new System.Drawing.Point(494, 253);
-			this.pbTexturePreview.Name = "pbTexturePreview";
-			this.pbTexturePreview.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Bottom;
-			this.pbTexturePreview.Size = new System.Drawing.Size(200, 200);
-			this.pbTexturePreview.TabIndex = 0;
-			this.pbTexturePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pbTexturePreview.BackColor = System.Drawing.Color.Black;
-			this.pbTexturePreview.ClientSize = new System.Drawing.Size(200, 200);
-			//
-			// cbFilterImages
-			//
-			this.cbFilterImages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.cbFilterImages.Location = new System.Drawing.Point(500, 12);
-			this.cbFilterImages.Name = "cbFilterImages";
-			this.cbFilterImages.Checked = true;
-			this.cbFilterImages.Text = "Only igImage2s?";
-			this.cbFilterImages.Size = new System.Drawing.Size(100, 23);
-			this.cbFilterImages.TabIndex = 10;
-			this.cbFilterImages.CheckedChanged += new System.EventHandler(ChangeFilter);
-			// 
-			// btnSaveAllObjects
-			// 
-			this.btnSaveAllObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnSaveAllObjects.Location = new System.Drawing.Point(500, 38);
-			this.btnTextureReplace.Name = "btnSaveAllObjects";
-			this.btnSaveAllObjects.Size = new System.Drawing.Size(75, 23);
-			this.btnSaveAllObjects.TabIndex = 2;
-			this.btnSaveAllObjects.Text = "Save All";
-			this.btnSaveAllObjects.UseVisualStyleBackColor = true;
-			this.btnSaveAllObjects.Click += new System.EventHandler(this.ExportAllObjects);
-			// 
-			// btnTextureExtract
-			// 
-			this.btnTextureExtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnTextureExtract.Location = new System.Drawing.Point(526, 465);
-			this.btnTextureExtract.Name = "btnTextureExtract";
-			this.btnTextureExtract.Size = new System.Drawing.Size(75, 23);
-			this.btnTextureExtract.TabIndex = 3;
-			this.btnTextureExtract.Text = "Extract";
-			this.btnTextureExtract.UseVisualStyleBackColor = true;
-			this.btnTextureExtract.Click += new System.EventHandler(this.ExportTexture);
-			// 
-			// btnTextureReplace
-			// 
-			this.btnTextureReplace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnTextureReplace.Location = new System.Drawing.Point(613, 465);
-			this.btnTextureReplace.Name = "btnTextureReplace";
-			this.btnTextureReplace.Size = new System.Drawing.Size(75, 23);
-			this.btnTextureReplace.TabIndex = 4;
-			this.btnTextureReplace.Text = "Replace";
-			this.btnTextureReplace.UseVisualStyleBackColor = true;
-			this.btnTextureReplace.Click += new System.EventHandler(this.ImportTexture);
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            treeItems = new TreeView();
+            pbTexturePreview = new PictureBox();
+            cbFilterImages = new CheckBox();
+            btnSaveAllObjects = new Button();
+            btnTextureExtract = new Button();
+            btnTextureReplace = new Button();
+            extractReplaceDDSLabel = new Label();
+            btnTextureExtractDDS = new Button();
+            btnTextureReplaceDDS = new Button();
+            btnSaveIGZ = new Button();
+            ((System.ComponentModel.ISupportInitialize)pbTexturePreview).BeginInit();
+            SuspendLayout();
+            // 
+            // treeItems
+            // 
+            treeItems.Font = new Font("Courier New", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            treeItems.Location = new Point(14, 14);
+            treeItems.Margin = new Padding(4, 3, 4, 3);
+            treeItems.Name = "treeItems";
+            treeItems.Size = new Size(555, 549);
+            treeItems.TabIndex = 1;
+            treeItems.AfterSelect += SelectionChange;
+            // 
+            // pbTexturePreview
+            // 
+            pbTexturePreview.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            pbTexturePreview.BackColor = Color.Black;
+            pbTexturePreview.Location = new Point(576, 292);
+            pbTexturePreview.Margin = new Padding(4, 3, 4, 3);
+            pbTexturePreview.Name = "pbTexturePreview";
+            pbTexturePreview.Size = new Size(233, 231);
+            pbTexturePreview.SizeMode = PictureBoxSizeMode.Zoom;
+            pbTexturePreview.TabIndex = 0;
+            pbTexturePreview.TabStop = false;
+            // 
+            // cbFilterImages
+            // 
+            cbFilterImages.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cbFilterImages.Checked = true;
+            cbFilterImages.CheckState = CheckState.Checked;
+            cbFilterImages.Location = new Point(583, 14);
+            cbFilterImages.Margin = new Padding(4, 3, 4, 3);
+            cbFilterImages.Name = "cbFilterImages";
+            cbFilterImages.Size = new Size(117, 27);
+            cbFilterImages.TabIndex = 10;
+            cbFilterImages.Text = "Only igImage2s?";
+            cbFilterImages.CheckedChanged += ChangeFilter;
+            // 
+            // btnSaveAllObjects
+            // 
+            btnSaveAllObjects.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSaveAllObjects.Location = new Point(583, 44);
+            btnSaveAllObjects.Margin = new Padding(4, 3, 4, 3);
+            btnSaveAllObjects.Name = "btnSaveAllObjects";
+            btnSaveAllObjects.Size = new Size(88, 27);
+            btnSaveAllObjects.TabIndex = 2;
+            btnSaveAllObjects.Text = "Save All";
+            btnSaveAllObjects.UseVisualStyleBackColor = true;
+            btnSaveAllObjects.Click += ExportAllObjects;
+            // 
+            // btnTextureExtract
+            // 
+            btnTextureExtract.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnTextureExtract.Location = new Point(614, 537);
+            btnTextureExtract.Margin = new Padding(4, 3, 4, 3);
+            btnTextureExtract.Name = "btnTextureExtract";
+            btnTextureExtract.Size = new Size(88, 27);
+            btnTextureExtract.TabIndex = 3;
+            btnTextureExtract.Text = "Extract";
+            btnTextureExtract.UseVisualStyleBackColor = true;
+            btnTextureExtract.Click += ExportTexture;
+            // 
+            // btnTextureReplace
+            // 
+            btnTextureReplace.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnTextureReplace.Location = new Point(715, 537);
+            btnTextureReplace.Margin = new Padding(4, 3, 4, 3);
+            btnTextureReplace.Name = "btnTextureReplace";
+            btnTextureReplace.Size = new Size(88, 27);
+            btnTextureReplace.TabIndex = 4;
+            btnTextureReplace.Text = "Replace";
+            btnTextureReplace.UseVisualStyleBackColor = true;
+            btnTextureReplace.Click += ImportTexture;
+            // 
+            // extractReplaceDDSLabel
+            // 
+            extractReplaceDDSLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            extractReplaceDDSLabel.Location = new Point(583, 97);
+            extractReplaceDDSLabel.Margin = new Padding(4, 3, 4, 3);
+            extractReplaceDDSLabel.Name = "extractReplaceDDSLabel";
+            extractReplaceDDSLabel.Size = new Size(132, 17);
+            extractReplaceDDSLabel.TabIndex = 4;
+            extractReplaceDDSLabel.Text = "Direct Extract/Replace";
+            // 
+            // btnTextureExtractDDS
+            // 
+            btnTextureExtractDDS.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnTextureExtractDDS.Location = new Point(583, 120);
+            btnTextureExtractDDS.Margin = new Padding(4, 3, 4, 3);
+            btnTextureExtractDDS.Name = "btnTextureExtractDDS";
+            btnTextureExtractDDS.Size = new Size(88, 27);
+            btnTextureExtractDDS.TabIndex = 4;
+            btnTextureExtractDDS.Text = "Extract DDS";
+            btnTextureExtractDDS.UseVisualStyleBackColor = true;
+            btnTextureExtractDDS.Click += ExportDDSTexture;
             // 
             // btnTextureReplaceDDS
             // 
-            this.btnTextureReplaceDDS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTextureReplaceDDS.Location = new System.Drawing.Point(613, 38);
-            this.btnTextureReplaceDDS.Name = "btnTextureReplaceDDS";
-            this.btnTextureReplaceDDS.Size = new System.Drawing.Size(75, 23);
-            this.btnTextureReplaceDDS.TabIndex = 4;
-            this.btnTextureReplaceDDS.Text = "Replace Whole DDS";
-            this.btnTextureReplaceDDS.UseVisualStyleBackColor = true;
-            this.btnTextureReplaceDDS.Click += new System.EventHandler(this.ImportDDSTexture);
+            btnTextureReplaceDDS.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnTextureReplaceDDS.Location = new Point(679, 120);
+            btnTextureReplaceDDS.Margin = new Padding(4, 3, 4, 3);
+            btnTextureReplaceDDS.Name = "btnTextureReplaceDDS";
+            btnTextureReplaceDDS.Size = new Size(88, 27);
+            btnTextureReplaceDDS.TabIndex = 4;
+            btnTextureReplaceDDS.Text = "Replace DDS";
+            btnTextureReplaceDDS.UseVisualStyleBackColor = true;
+            btnTextureReplaceDDS.Click += ImportDDSTexture;
             // 
             // btnSaveIGZ
             // 
-            this.btnSaveIGZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnSaveIGZ.Location = new System.Drawing.Point(613, 12);
-			this.btnSaveIGZ.Name = "btnSaveIGZ";
-			this.btnSaveIGZ.Size = new System.Drawing.Size(75, 23);
-			this.btnSaveIGZ.TabIndex = 2;
-			this.btnSaveIGZ.Text = "Save IGZ";
-			this.btnSaveIGZ.UseVisualStyleBackColor = true;
-			this.btnSaveIGZ.Click += new System.EventHandler(this.Save);
-			// 
-			// IGZ_GeneralForm
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(700, 500);
-			this.Controls.Add(this.treeItems);
-			this.Controls.Add(this.pbTexturePreview);
-			this.Controls.Add(this.cbFilterImages);
-			this.Controls.Add(this.btnSaveAllObjects);
-			this.Controls.Add(this.btnTextureExtract);
-			this.Controls.Add(this.btnTextureReplace);
-            this.Controls.Add(this.btnTextureReplaceDDS);
-            this.Controls.Add(this.btnSaveIGZ);
-			this.Name = "Form_igzGeneral";
-			this.Text = "IGZ Viewer";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Closing);
-			this.ResumeLayout(false);
-			this.PerformLayout();
-		}
+            btnSaveIGZ.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSaveIGZ.Location = new Point(715, 14);
+            btnSaveIGZ.Margin = new Padding(4, 3, 4, 3);
+            btnSaveIGZ.Name = "btnSaveIGZ";
+            btnSaveIGZ.Size = new Size(88, 27);
+            btnSaveIGZ.TabIndex = 2;
+            btnSaveIGZ.Text = "Save IGZ";
+            btnSaveIGZ.UseVisualStyleBackColor = true;
+            btnSaveIGZ.Click += Save;
+            // 
+            // IGZ_GeneralForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(817, 577);
+            Controls.Add(treeItems);
+            Controls.Add(pbTexturePreview);
+            Controls.Add(cbFilterImages);
+            Controls.Add(btnSaveAllObjects);
+            Controls.Add(btnTextureExtract);
+            Controls.Add(btnTextureReplace);
+            Controls.Add(extractReplaceDDSLabel);
+            Controls.Add(btnTextureExtractDDS);
+            Controls.Add(btnTextureReplaceDDS);
+            Controls.Add(btnSaveIGZ);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "IGZ_GeneralForm";
+            Text = "IGZ Viewer";
+            FormClosing += Closing;
+            ((System.ComponentModel.ISupportInitialize)pbTexturePreview).EndInit();
+            ResumeLayout(false);
+        }
 
-		#endregion
+        #endregion
 
-		public System.Windows.Forms.TreeView treeItems;
+        public System.Windows.Forms.TreeView treeItems;
 		public System.Windows.Forms.PictureBox pbTexturePreview;
 		public System.Windows.Forms.CheckBox cbFilterImages;
 		public System.Windows.Forms.Button btnSaveAllObjects;
 		public System.Windows.Forms.Button btnTextureExtract;
 		public System.Windows.Forms.Button btnTextureReplace;
+        public System.Windows.Forms.Label extractReplaceDDSLabel;
+        public System.Windows.Forms.Button btnTextureExtractDDS;
         public System.Windows.Forms.Button btnTextureReplaceDDS;
         public System.Windows.Forms.Button btnSaveIGZ;
 	}

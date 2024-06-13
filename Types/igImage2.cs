@@ -7,10 +7,11 @@ using BCnEncoder.Decoder;
 using BCnEncoder.Encoder;
 using BCnEncoder.ImageSharp;
 using SixLabors.ImageSharp;
+using IGAE_GUI.Utils;
 
 namespace IGAE_GUI.Types
 {
-	public class igImage2 : igObject
+    public class igImage2 : igObject
 	{
 		ushort width;
 		ushort height;
@@ -21,8 +22,9 @@ namespace IGAE_GUI.Types
 		uint index;
 		uint textureOffset;
 		uint textureSize;
+        bool mode;
 
-		public igImage2(igObject basic)
+        public igImage2(igObject basic)
 		{
 			_container = basic._container;
 			offset     = basic.offset;
@@ -71,19 +73,26 @@ namespace IGAE_GUI.Types
 		{
 			Console.WriteLine(textureOffset.ToString("X08"));
 			_container.ebr.BaseStream.Seek(textureOffset, SeekOrigin.Begin);
-			IGAE_GUI.Utils.TextureHelper.Extract(_container.ebr.BaseStream, output, width, height, textureSize, mipmapCount, format, true);
+			mode = TextureHelper.Extract(_container.ebr.BaseStream, output, width, height, textureSize, mipmapCount, format, true);
 		}
 		public void Replace(Stream input)
 		{
 			_container.ebr.BaseStream.Seek(textureOffset, SeekOrigin.Begin);
-			IGAE_GUI.Utils.TextureHelper.Replace(input, _container.ebr.BaseStream, width, height, textureSize, mipmapCount, format);
+			TextureHelper.Replace(input, _container.ebr.BaseStream, width, height, textureSize, mipmapCount, format, mode);
 			input.Close();
         }
-		
+
+        public void ExtractDDS(Stream output)
+        {
+            Console.WriteLine(textureOffset.ToString("X08"));
+            _container.ebr.BaseStream.Seek(textureOffset, SeekOrigin.Begin);
+            TextureHelper.ExtractDDS(_container.ebr.BaseStream, output, width, height, textureSize, mipmapCount, format, true);
+        }
+
         public void ReplaceDDS(Stream input)
         {
             _container.ebr.BaseStream.Seek(textureOffset, SeekOrigin.Begin);
-            IGAE_GUI.Utils.TextureHelper.ReplaceDDS(input, _container.ebr.BaseStream, width, textureSize, format);
+            TextureHelper.ReplaceDDS(input, _container.ebr.BaseStream, width, textureSize, format);
             input.Close();
         }
     }

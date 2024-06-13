@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using SevenZip.Compression.LZMA;
 using HashDepot;
+using System.Collections;
 
 namespace IGAE_GUI
 {
@@ -26,10 +27,15 @@ namespace IGAE_GUI
 		StreamHelper.Endianness outputEndianess = StreamHelper.Endianness.Little;
 
 		public IGA_File(string filepath, IGA_Version version)
-		{
-			FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.Read);
+        {
+            MemoryStream fs = new MemoryStream();
+            FileStream ts = new FileStream(filepath, FileMode.Open, FileAccess.Read);
+            ts.CopyTo(fs);
+            ts.Close();
+            ts.Dispose();
+            fs.Seek(0, SeekOrigin.Begin);
 
-			name = filepath;
+            name = filepath;
 
 			byte[] magicNumber = new byte[4];
 
@@ -394,12 +400,12 @@ namespace IGAE_GUI
 				{
 					inputFiles[i] = Path.GetDirectoryName(name) + names[i].Substring(names[i][1] == ':' ? 2 : 0);
 				}
-			}
-			Build(output, inputFiles, showCompleteBox);
+            }
+            Build(output, inputFiles, showCompleteBox);
 		}
 		public unsafe void Build(string output, string[] inputFiles, bool showCompleteBox = false)
-		{
-			FileStream ofs = new FileStream(output, FileMode.Create, FileAccess.ReadWrite);
+        {
+            FileStream ofs = new FileStream(output, FileMode.Create, FileAccess.ReadWrite);
 			StreamHelper osh = new StreamHelper(ofs);
 			osh._endianness = outputEndianess;
 
@@ -495,10 +501,10 @@ namespace IGAE_GUI
 			{
 				System.Windows.Forms.MessageBox.Show("Build Complete!");
 			}
-		}
-		
-		//Credit goes to DTZxPorter for this function and HashSearcher
-		private uint CalculateSlop()
+        }
+
+        //Credit goes to DTZxPorter for this function and HashSearcher
+        private uint CalculateSlop()
 		{
 			var HashBuffer = new byte[numberOfFiles * 4];
 			var HashStaging = new List<uint>();
